@@ -1,0 +1,474 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html , body{
+    height: 100%;
+    width: 100%;
+}
+
+#manuPage{
+    background-image: url(./src/banner_bg.webp);
+    background-size: cover;
+
+}
+
+.titleFont{
+    font-family: 'Pacifico', cursive;
+}
+
+.bgAnimationOverlay{
+    transform: translate(0,0);
+    animation-name: bgAnimation;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+
+}
+
+.card:hover{
+    height: 80%;
+    transition: 0.8s;
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+.card:hover.card .card-items{
+    height: fit-content;
+    top: 30%;
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    transition:0.8s;
+}
+.card:hover.card .info{
+    scale: 0.8;
+    top: -20%;
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all ease-in-out 0.2s;
+}
+
+@keyframes bgAnimation {
+    0%{
+        transform: translateX(-10px);
+    }
+    33%{
+        transform:translateY(-20px) ;
+    }
+    66%{
+        transform: translateX(10px);
+    }
+    100%{
+        transform: translateX(20px);
+    }
+}
+
+.circle {
+    height: 24px;
+    width: 24px;
+    border-radius: 24px;
+    background-color: black;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999999; /* so that it stays on top of all other elements */
+  }
+
+
+/* slider page content */
+#page2{
+    height: 100vh;
+    min-width: 100vw;
+    position: relative;
+}
+
+#slider{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+#slider::after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0,0, 0.5);
+}
+
+.slide{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    will-change: transform;
+    overflow: hidden;
+}
+
+.slider img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    will-change: transform;
+}
+
+.timeline{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 105%;
+    z-index: 2;
+    display: flex;
+}
+
+.timeline p{
+    font-weight: 500;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.timeline p sup{
+    position: relative;
+    top: -4px;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+header{
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+    border-bottom: 1px solid #fff4;
+}
+header ul{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    list-style: none;
+}
+header li{
+    padding: 30px 40px;
+    color: #fff;
+}
+header li.active, header li:hover{
+    border-bottom: 2px solid #fff;
+}
+.Homeslider{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to right, #2B2F3A, #0D0E12);
+    overflow: hidden;
+}
+.Homeslider::before{
+    position: absolute;
+    width: 50%;
+    height: 100vh;
+    content: '';
+    top: 0;
+    left: 0;
+    background-color: #E88735;
+}
+.title{
+    position: absolute;
+    top: 10%;
+    right: 70%;
+    text-align: right;
+    color: #fff;
+    font-size: 150px;
+    width: 40%;
+    font-family: 'Pacifico', cursive;
+    text-shadow: 3px 5px 0px #478860;
+    line-height: .9em;
+    transform: rotate(0deg);
+}
+.images{
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    --rotate: 0deg;
+    transform: translate(-50%, 50%) rotate(var(--rotate));
+    width: 1000px;
+    height: 1000px;
+    border-radius: 50%;
+    transition: transform 0.5s ease-in-out;
+    outline: 1px dashed #fff5;
+    outline-offset: -100px;
+}
+.images .item{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform: rotate(calc(60deg * var(--i)));
+}
+.images .item img{
+    height: 350px;
+}
+
+.content{
+    color: #fff;
+    position: absolute;
+    top: 10%;
+    left: 60%;
+    text-align: justify;
+    width: 350px;
+}
+.content h1{
+    color: #E88735;
+    font-size: 48px;
+}
+.content button{
+    margin-top: 30px;
+    padding: 10px 30px;
+    border-radius: 20px;
+    background-color: #E88735;
+    color: #fff;
+    border: none;
+    float: right;
+}
+.content .item{
+    display: none;
+}
+.content .item.active{
+    display: block;
+}
+@keyframes showContent{
+    from{
+        opacity: 0;
+        transform: translateY(100px);
+    }to{
+        opacity: 1;
+    }
+}
+.content .item.active h1{
+    opacity: 0;
+    animation: showContent 0.5s ease-in-out 1 forwards;
+}
+.content .item.active .des{
+    opacity: 0;
+    animation: showContent 0.5s 0.3s ease-in-out 1 forwards;
+}
+.content .item.active button{
+    opacity: 0;
+    animation: showContent 0.5s 0.6s ease-in-out 1 forwards;
+}
+
+
+#prev,
+#next{
+    position: absolute;
+    border: none;
+    top: 50%;
+    left: 250px;
+    font-size: 100px;
+    font-family: cursive;
+    background-color: transparent;
+    color: #fff;
+    font-weight: bold;
+    opacity: 0.3
+}
+#next{
+    left: unset;
+    right: 250px;
+}
+#next:hover,
+#prev:hover{
+    opacity: 1
+}
+
+
+/* slider 5 styling */
+
+#page5{
+ 
+    overflow: hidden;
+}
+
+#page5 img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider5{
+    height: 100vh;
+    width: 100vw;
+}
+
+.slider-titles{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300vw;
+    height: 100vh;
+    display: flex;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.titles5{
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.titles5 h1{
+    font-size: 28px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.2);
+    transition: color 0.25s ease, opacity 0.25s ease ;
+}
+
+
+.active h1{
+    color: #fff;
+}
+
+.slider5 .slide-images{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    pointer-events: all;
+    opacity: 0.5;
+}
+
+.img-top{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.img-bottom{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.img-top{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* .slide-images:hover .img-top{
+    clip-path: polygon(90% 0%,100% 0%,10% 50%, 90% 50%);
+}
+
+.slide-images:hover .img-bottom{
+    clip-path: polygon(90% 50%,10% 50%,10% 100%, 90% 100%);
+} */
+
+.loader{
+    transition: all ease 0.5s;
+}
+
+
+
+
+@media (max-width: 900px){
+    .circle{
+        display: none;
+    }
+    #manuPage{
+        height: 300vh;
+
+    }
+    .card-container {
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 10vh;
+        margin-top: -15vh;
+    }
+    .card-container .card{
+        width: 95%;
+        height: 25%;
+        flex-shrink: 0;
+       
+
+    }
+    .card-image{
+        width: 40%;
+        margin-top: 2vh;
+    }
+    .card-items {
+        top: 45%;
+        height: 50%;
+    }
+    .headerMenuPage{
+        margin-top: -25vh;
+    }
+    
+    .timeline{
+        width: 110%;
+    }
+    #page2{
+        height: 60vh;
+        width: 100vw;
+    }
+
+    #slider .slide h1{
+        font-size: 20px;
+        color: white;
+        z-index: 99;
+        
+    }
+
+    /* slider page 5 */
+
+    .slide-images{
+        height: 100%;
+        width: 100%;
+    }
+
+    .img-top,
+    .img-bottom{
+        clip-path:polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .slide-images:hover .img-top,
+    .slide-images:hover .img-bottom
+    {
+        clip-path:polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .title h1{
+        opacity: 0;
+        font-size: 24px;
+
+    }
+
+    .active h1{
+        opacity: 1;
+    }
+    
+
+}
+
