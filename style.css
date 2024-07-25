@@ -535,6 +535,10 @@ header li.active, header li:hover{
         height: 0;
     }
 
+    body{
+        overflow-x: hidden;
+    }
+
 }
 
 /* footer section  */
