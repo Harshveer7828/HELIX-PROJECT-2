@@ -538,6 +538,9 @@ header li.active, header li:hover{
     body{
         overflow-x: hidden;
     }
+html{
+        overflow-x: hidden;
+    }
 
 }
 
